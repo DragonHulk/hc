@@ -1,6 +1,6 @@
 var esp = {} ;
 var envList = ["DEV","UAT","IQA","QA"];
-
+esp.path;
 esp.initView = function () {
     this.view = util.loadFile('/app/view/entitySelectionList.html');
 }
@@ -38,5 +38,8 @@ esp.onSelectEnv = function (env) {
                      break; 
         default : console.errror("path not selected");                    
     }
+    esp.path =path;
     em.fire('EnvSelected',path);
+    eip.setup();
+
 }

@@ -1,18 +1,23 @@
 var ipListPanel = {};
 var subFolders = [];
-subFolders = ["10.141.13.250"];
 
 ipListPanel.initView = function (){
     this.view = util.loadFile('/app/view/ipList.html');
-    document.getElementById('#entityInfo').innerHTML = this.view;
 }
 
 ipListPanel.listenEvents = function (){
     em.listen('EnvSelected',ipListPanel.setPath);
+
+    document.querySelector('#ipList').addEventListener('click', function  (e) {
+        var selectedip = e.target.innerHTML;
+        ipListPanel.onSelectIp(selectedip);
+    });
 }
 
 ipListPanel.setPath = function (selectedPath){
-    //subFolders = util.getSubFolders(selectedPath);//dono mocking for now
+    console.log("from ip list panel");
+    subFolders = ["10.141.13.250"];
+   //subFolders = util.getSubFolders(selectedPath);//dono mocking for now
 }
 
 ipListPanel.prepareFolder = function (folder){
@@ -25,4 +30,8 @@ ipListPanel.applyDefaults = function () {
     subFolders.forEach(function  (folder) {
         tabs.insertAdjacentHTML('beforeend', ipListPanel.prepareFolder(folder));
     });  
+}
+
+ipListPanel.onSelectIp = function (ip) {
+    resultPanel.ipSelected(ip);
 }
