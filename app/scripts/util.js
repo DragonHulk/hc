@@ -56,7 +56,7 @@ util.getSubFolders = function (path) {
     return fileNames;
 }
 
-function parseDirectoryListing(text) 
+function parseDirectoryListing (text) 
 {
     var docs = text
                  .match(/href="([\w]+)/g) // pull out the hrefs
@@ -66,12 +66,11 @@ function parseDirectoryListing(text)
 }   
 
 util.readFile = function (path) {
-    var log = getFile(path)
-    console.log(log);
-    return log;
+    var file = handleReadFile(path)
+    return file;
 }
 
-function getFile (path) {
+function handleReadFile (path) {
   var response =  jQuery.ajax({
         url: path,
         async: false
@@ -91,7 +90,6 @@ util.getFileByFormat = function (path,extn) {
 
 util.getAllKeys = function (data) {
     var key = [];
-    //var value = [];
     var textByLine = [];
     var textByColon = [];
 
@@ -99,17 +97,7 @@ util.getAllKeys = function (data) {
     for (var i = 0 ; i < textByLine.length ; i++) {
             textByColon.push(textByLine[i].split(/:(.+)/));
             key.push(textByColon[i][0]);
-           // value.push(textByColon[i][1]);
         }
-    // var obj ='{';
-    // for(var i = 0; i < key.length ; i++ ){
-    //     obj = obj +'"'+ key[i] +'"'+ ':' +'"'+ value [i] +'"';
-    //     if( i != key.length - 1){
-    //         obj = obj + ',';
-    //     }
-    // }
-    // obj = obj + '}';
-    // return obj;
     return key;
 }
 
@@ -122,7 +110,6 @@ util.getAllValues = function (data) {
     textByLine = data.split("\n");
     for (var i = 0 ; i < textByLine.length ; i++) {
         textByColon.push(textByLine[i].split(/:(.+)/));
-        //key.push(textByColon[i][0]);
         value.push(textByColon[i][1]);
     }
     return value;

@@ -1,24 +1,24 @@
 var folderListPanel = {} ;
-var path;
+folderListPanel.path;
 
 folderListPanel.initView = function () {
     this.view =  util.loadFile('app/view/folderList.html') ;
-    fileListPanel.initView ();
-    fileInfoPanel.initView ();
     document.getElementById('properties').innerHTML = this.view;
-    document.getElementById('fileList').innerHTML = fileListPanel.view;
-    document.getElementById('fileDetail').innerHTML = fileInfoPanel.view;
 }
 
 folderListPanel.listenEvents = function () {
-    document.querySelector('#logProperties').addEventListener('click', function  (e) {
+    
+    document.querySelector('#propertyName').addEventListener('click', function  (e) {
+        var path = '';
         var selectedPropertyFolder = e.target.innerHTML ;
-        path = path +'/'+ selectedPropertyFolder ;
+        path = folderListPanel.path +'/'+ selectedPropertyFolder ;
+        folderListPanel.path = path;
+        fileListPanel.setup();
     });
 }
 
 folderListPanel.prePopulate  = function () {
-    path = logList.path ;
+   folderListPanel.path = logList.path ;
 }
 
 folderListPanel.setup = function () {

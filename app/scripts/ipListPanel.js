@@ -15,7 +15,6 @@ ipListPanel.listenEvents = function (){
 }
 
 ipListPanel.setPath = function (selectedPath){
-    console.log("from ip list panel");
     subFolders = ["10.141.13.250"];
    //subFolders = util.getSubFolders(selectedPath);//dono mocking for now
 }

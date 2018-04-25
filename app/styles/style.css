@@ -1,0 +1,51 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+#entityInfo{
+    height: 80%;
+    width: 20%;
+    position: absolute;
+    top: 40px;
+}
+
+#resultInfo{
+    width: 80%;
+    position: absolute;
+    left: 10%;
+    top: 40px;
+}
+
+#resultTable{
+    border: 1px solid black;
+}
+
+tr {
+    border : 1px solid black;
+}
+
+.tab{
+    font-weight:bold;
+    font-size: 20px;
+    cursor:pointer;
+    padding: 5px;
+}
+#logProperties{
+    padding: 2px 0px;
+}
+
+#fileDetail{
+    border: 1px solid;
+    height: 50%;
+    width: 80%;
+    right: 0px;
+    position: absolute;
+}
+
+#fileList{
+    border: 1px solid;
+    width: 19%;
+    height: 50%;
+    position: absolute;
+}
+
